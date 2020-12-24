@@ -1,5 +1,19 @@
-import 'package:flutter/widgets.dart';
+import 'package:stacked/stacked.dart';
 
-abstract class RootViewModel extends ChangeNotifier {
-  final bool loading = false;
+abstract class RootViewModel extends BaseViewModel {
+  bool _loading = false;
+
+  bool get loading => _loading;
+
+  initialize();
+
+  void showProgress() {
+    _loading = true;
+    notifyListeners();
+  }
+
+  void hideProgress() {
+    _loading = false;
+    notifyListeners();
+  }
 }
