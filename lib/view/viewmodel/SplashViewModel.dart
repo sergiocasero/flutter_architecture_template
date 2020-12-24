@@ -1,23 +1,29 @@
+import 'package:flutter_architecture_template/domain/model/Poi.dart';
+import 'package:flutter_architecture_template/domain/repository/PoiRepository.dart';
 import 'package:flutter_architecture_template/view/viewmodel/RootViewModel.dart';
 
 class SplashViewModel extends RootViewModel {
-  String _helloWorld = "This is before get info";
+  final PoiRepository _repository;
 
+  String _helloWorld = "This is before get info";
   String get helloWorld => _helloWorld;
+
+  List<Poi> _pois = [];
+  List<Poi> get pois => _pois;
+
+  SplashViewModel(this._repository);
 
   @override
   initialize() {
-    _mockInitialize();
+    _getPois();
   }
 
-  void _mockInitialize() async {
+  void _getPois() async {
     showProgress();
 
-    for (var i = 0; i < 5; i++) {
-      await Future.delayed(Duration(seconds: 1));
-      print(i);
-    }
-    _helloWorld = "This is after get info";
+    final pois = await _repository.getPois();
+    this.pois.clear();
+    this.pois.addAll(pois);
     notify();
 
     hideProgress();

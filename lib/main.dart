@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_architecture_template/di/Locator.dart';
 import 'package:flutter_architecture_template/view/widget/SplashWidget.dart';
 
-void main() {
+void main() async {
+  await initializeDI();
   runApp(MyApp());
 }
 
