@@ -5,11 +5,12 @@ import 'package:flutter_architecture_template/data/datasource/remote/Remote.dart
 import 'package:flutter_architecture_template/data/repository/PoiRepositoryImpl.dart';
 import 'package:flutter_architecture_template/domain/repository/PoiRepository.dart';
 import 'package:get_it/get_it.dart';
+import 'package:http/http.dart' as http;
 
 final getIt = GetIt.I;
 
 Future<void> initializeDI() async {
   getIt.registerSingleton<Local>(SqliteLocal());
-  getIt.registerSingleton<Remote>(HttpRemote());
+  getIt.registerSingleton<Remote>(HttpRemote(http.Client()));
   getIt.registerSingleton<PoiRepository>(PoiRepositoryImpl(getIt.get(), getIt.get()));
 }

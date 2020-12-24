@@ -12,7 +12,6 @@ class PoiRepositoryImpl extends PoiRepository {
 
   @override
   Future<List<Poi>> getPois() {
-    // TODO: implement getPois
-    throw UnimplementedError();
+    return _remote.getPois();
   }
 }

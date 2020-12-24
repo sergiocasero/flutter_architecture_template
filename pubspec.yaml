@@ -14,7 +14,7 @@ dependencies:
 
   stacked: ^1.7.7
   get_it:
-  injectable:
+  http: ^0.12.2
 
 dev_dependencies:
   flutter_test:
