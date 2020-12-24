@@ -6,26 +6,45 @@ class SplashViewModel extends RootViewModel {
   final PoiRepository _repository;
 
   String _helloWorld = "This is before get info";
+
   String get helloWorld => _helloWorld;
 
   List<Poi> _pois = [];
+
   List<Poi> get pois => _pois;
 
   SplashViewModel(this._repository);
 
   @override
   initialize() {
-    _getPois();
+    // Do nothing in that case
   }
 
-  void _getPois() async {
+  void _getPois(bool forceLocal) async {
     showProgress();
 
-    final pois = await _repository.getPois();
-    this.pois.clear();
-    this.pois.addAll(pois);
+    final pois = await _repository.getPois(forceLocal);
+    this._pois.clear();
+    this._pois.addAll(pois);
     notify();
 
     hideProgress();
+  }
+
+  void onClearPressed() async {
+    showProgress();
+
+    await _repository.clearPois();
+    this._pois.clear();
+
+    hideProgress();
+  }
+
+  void onGetPressed() {
+    _getPois(false);
+  }
+
+  void onForceLocalPressed() async {
+    _getPois(true);
   }
 }

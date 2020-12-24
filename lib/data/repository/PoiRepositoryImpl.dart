@@ -10,14 +10,24 @@ class PoiRepositoryImpl extends PoiRepository {
   PoiRepositoryImpl(this._remote, this._local);
 
   @override
-  Future<List<Poi>> getPois() async {
+  Future<List<Poi>> getPois(bool forceLocal) async {
     final hasPois = await _local.hasPois();
-    if (hasPois) {
+    if (hasPois || forceLocal) {
       return _local.getPois();
     } else {
       final pois = await _remote.getPois();
       await _local.addPois(pois);
       return pois;
     }
+  }
+
+  @override
+  Future<void> clearPois() {
+    return _local.clearPois();
+  }
+
+  @override
+  Future<bool> hasPois() {
+    return _local.hasPois();
   }
 }
