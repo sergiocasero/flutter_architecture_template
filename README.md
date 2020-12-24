@@ -11,6 +11,8 @@ In this architecture we have 3 main folders
 - Data: In this folder, we will include every class that should manage (or be managed) by the repository pattern
 - View: Widgets and ViewModels, that's all, so the presentation logic must be here
 
+![page](assets/flow.png)
+
 ## Software patterns
 
 - MVVM (Model View View Model)
