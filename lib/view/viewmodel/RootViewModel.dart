@@ -9,11 +9,15 @@ abstract class RootViewModel extends BaseViewModel {
 
   void showProgress() {
     _loading = true;
-    notifyListeners();
+    notify();
   }
 
   void hideProgress() {
     _loading = false;
+    notify();
+  }
+
+  void notify() {
     notifyListeners();
   }
 }

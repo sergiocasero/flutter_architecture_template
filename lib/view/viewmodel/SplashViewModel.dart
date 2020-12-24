@@ -18,7 +18,7 @@ class SplashViewModel extends RootViewModel {
       print(i);
     }
     _helloWorld = "This is after get info";
-    notifyListeners();
+    notify();
 
     hideProgress();
   }
