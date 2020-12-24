@@ -7,14 +7,14 @@ class PoiResponseDto {
 
     factory PoiResponseDto.fromJson(Map<String, dynamic> json) {
         return PoiResponseDto(
-            list: json['list'] != null ? (json['list'] as List).map((i) => PoiDto.fromJson(i)).toList() : null,
+            list: json['list'] != null ? (json['list'] as List).map((i) => PoiDto.fromMap(i)).toList() : null,
         );
     }
 
     Map<String, dynamic> toJson() {
         final Map<String, dynamic> data = new Map<String, dynamic>();
         if (this.list != null) {
-            data['list'] = this.list.map((v) => v.toJson()).toList();
+            data['list'] = this.list.map((v) => v.toMap()).toList();
         }
         return data;
     }

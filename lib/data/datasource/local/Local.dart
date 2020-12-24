@@ -6,4 +6,8 @@ abstract class Local {
   Future<bool> hasPois();
 
   Future<void> clearPois();
+
+  Future<void> addPoi(Poi poi);
+
+  Future<void> addPois(List<Poi> pois);
 }

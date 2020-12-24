@@ -3,6 +3,7 @@ import 'package:flutter_architecture_template/di/Locator.dart';
 import 'package:flutter_architecture_template/view/widget/SplashWidget.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await initializeDI();
   runApp(MyApp());
 }

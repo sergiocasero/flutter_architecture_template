@@ -5,7 +5,7 @@ class PoiDto {
 
     PoiDto({this.geocoordinates, this.id, this.title});
 
-    factory PoiDto.fromJson(Map<String, dynamic> json) {
+    factory PoiDto.fromMap(Map<String, dynamic> json) {
         return PoiDto(
             geocoordinates: json['geocoordinates'], 
             id: json['id'], 
@@ -13,7 +13,7 @@ class PoiDto {
         );
     }
 
-    Map<String, dynamic> toJson() {
+    Map<String, dynamic> toMap() {
         final Map<String, dynamic> data = new Map<String, dynamic>();
         data['geocoordinates'] = this.geocoordinates;
         data['id'] = this.id;

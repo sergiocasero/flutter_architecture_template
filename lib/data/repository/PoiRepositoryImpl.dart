@@ -4,14 +4,20 @@ import 'package:flutter_architecture_template/domain/model/Poi.dart';
 import 'package:flutter_architecture_template/domain/repository/PoiRepository.dart';
 
 class PoiRepositoryImpl extends PoiRepository {
-
   final Remote _remote;
   final Local _local;
 
   PoiRepositoryImpl(this._remote, this._local);
 
   @override
-  Future<List<Poi>> getPois() {
-    return _remote.getPois();
+  Future<List<Poi>> getPois() async {
+    final hasPois = await _local.hasPois();
+    if (hasPois) {
+      return _local.getPois();
+    } else {
+      final pois = await _remote.getPois();
+      await _local.addPois(pois);
+      return pois;
+    }
   }
 }
