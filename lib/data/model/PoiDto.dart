@@ -1,3 +1,5 @@
+import '../../domain/model/Poi.dart';
+
 class PoiDto {
     String geocoordinates;
     String id;
@@ -20,4 +22,20 @@ class PoiDto {
         data['title'] = this.title;
         return data;
     }
+
+    factory PoiDto.fromPoi(Poi poi) {
+      return PoiDto(
+        id: poi.id,
+        title: poi.title,
+        geocoordinates: "${poi.lat},${poi.lng}",
+      );
+    }
+    
+    Poi toPoi() {
+      final geoData = this.geocoordinates.split(",");
+      return Poi(this.id, this.title, double.parse(geoData[0]), double.parse(geoData[1]));
+    }
+
+
+
 }
