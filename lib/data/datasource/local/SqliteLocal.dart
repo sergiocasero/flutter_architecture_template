@@ -1,5 +1,5 @@
 import 'package:flutter_architecture_template/data/datasource/local/Local.dart';
-import 'package:flutter_architecture_template/data/model/PoiDao.dart';
+import 'package:flutter_architecture_template/data/datasource/local/PoiDao.dart';
 import 'package:flutter_architecture_template/domain/model/Poi.dart';
 import 'package:sqflite/sqflite.dart';
 
