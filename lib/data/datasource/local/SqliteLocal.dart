@@ -37,4 +37,9 @@ class SqliteLocal extends Local {
   Future<void> addPois(List<Poi> pois) async {
     return await _dao.insertAll(pois.map((e) => PoiDto.fromPoi(e)).toList());
   }
+
+  @override
+  Future<Poi> getPoi(String id)  async {
+    return (await _dao.getById(id)).toPoi();
+  }
 }

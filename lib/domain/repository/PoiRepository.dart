@@ -6,4 +6,6 @@ abstract class PoiRepository {
   Future<void> clearPois();
 
   Future<bool> hasPois();
+
+  Future<Poi> getPoi(String id);
 }

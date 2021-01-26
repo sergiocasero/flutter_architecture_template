@@ -30,4 +30,9 @@ class PoiRepositoryImpl extends PoiRepository {
   Future<bool> hasPois() {
     return _local.hasPois();
   }
+
+  @override
+  Future<Poi> getPoi(String id) {
+    return _local.getPoi(id);
+  }
 }

@@ -1,15 +1,17 @@
 import 'package:flutter_architecture_template/domain/model/Poi.dart';
 import 'package:flutter_architecture_template/domain/repository/PoiRepository.dart';
+import 'package:flutter_architecture_template/view/Navigator.dart';
 import 'package:flutter_architecture_template/view/viewmodel/RootViewModel.dart';
 
-class SplashViewModel extends RootViewModel {
+class ListViewModel extends RootViewModel {
   final PoiRepository _repository;
+  final Navigator _navigator;
 
   List<Poi> _pois = [];
 
   List<Poi> get pois => _pois;
 
-  SplashViewModel(this._repository);
+  ListViewModel(this._repository, this._navigator);
 
   @override
   initialize() {
@@ -42,5 +44,9 @@ class SplashViewModel extends RootViewModel {
 
   void onForceLocalPressed() async {
     _getPois(true);
+  }
+
+  void onPoiTap(String id) {
+    _navigator.toDetail(id);
   }
 }

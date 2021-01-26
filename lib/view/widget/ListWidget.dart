@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_architecture_template/di/Locator.dart';
-import 'package:flutter_architecture_template/view/viewmodel/SplashViewModel.dart';
+import 'package:flutter_architecture_template/view/viewmodel/ListViewModel.dart';
 import 'package:flutter_architecture_template/view/widget/RootWidget.dart';
 
-class SplashWidget extends RootWidget<SplashViewModel> {
-  SplashWidget() : super(getIt());
+class ListWidget extends RootWidget<ListViewModel> {
+  ListWidget() : super(getIt());
 
   @override
-  Widget widget(SplashViewModel model) {
+  Widget widget(ListViewModel model) {
     return Scaffold(
       body: withProgress(
         body: SafeArea(
@@ -37,6 +37,7 @@ class SplashWidget extends RootWidget<SplashViewModel> {
                         itemBuilder: (ctx, index) {
                           final poi = model.pois[index];
                           return ListTile(
+                            onTap: () => model.onPoiTap(poi.id),
                             leading: CircleAvatar(child: Text(poi.id)),
                             title: Text(poi.title),
                             subtitle: Text("Lat: ${poi.lat}, Lng: ${poi.lng}"),

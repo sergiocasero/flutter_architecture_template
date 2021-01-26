@@ -10,4 +10,6 @@ abstract class Local {
   Future<void> addPoi(Poi poi);
 
   Future<void> addPois(List<Poi> pois);
+
+  Future<Poi> getPoi(String id);
 }

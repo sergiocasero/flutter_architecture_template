@@ -28,4 +28,9 @@ class PoiDao {
   Future<bool> hasPois() async {
     return (await getAll()).isNotEmpty;
   }
+
+  Future<PoiDto> getById(String id) async {
+    final poi = (await _db.query("poi", where: "id = ?", whereArgs: [id])).first;
+    return PoiDto.fromMap(poi);
+  }
 }

@@ -4,7 +4,9 @@ import 'package:flutter_architecture_template/data/datasource/remote/HttpRemote.
 import 'package:flutter_architecture_template/data/datasource/remote/Remote.dart';
 import 'package:flutter_architecture_template/data/repository/PoiRepositoryImpl.dart';
 import 'package:flutter_architecture_template/domain/repository/PoiRepository.dart';
-import 'package:flutter_architecture_template/view/viewmodel/SplashViewModel.dart';
+import 'package:flutter_architecture_template/view/Navigator.dart';
+import 'package:flutter_architecture_template/view/viewmodel/DetailViewModel.dart';
+import 'package:flutter_architecture_template/view/viewmodel/ListViewModel.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:sqflite/sqflite.dart';
@@ -39,5 +41,8 @@ void _data() async {
 void _domain() async {}
 
 void _view() async {
-  getIt.registerFactory<SplashViewModel>(() => SplashViewModel(getIt()));
+  getIt.registerSingleton<Navigator>(Navigator());
+
+  getIt.registerFactory<ListViewModel>(() => ListViewModel(getIt(), getIt()));
+  getIt.registerFactory<DetailViewModel>(() => DetailViewModel(getIt()));
 }
