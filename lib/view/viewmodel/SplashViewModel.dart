@@ -5,10 +5,6 @@ import 'package:flutter_architecture_template/view/viewmodel/RootViewModel.dart'
 class SplashViewModel extends RootViewModel {
   final PoiRepository _repository;
 
-  String _helloWorld = "This is before get info";
-
-  String get helloWorld => _helloWorld;
-
   List<Poi> _pois = [];
 
   List<Poi> get pois => _pois;
