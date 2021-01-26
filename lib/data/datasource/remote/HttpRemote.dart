@@ -16,6 +16,6 @@ class HttpRemote extends Remote {
   Future<List<Poi>> getPois() async {
     final response = await _client.get(_endpoint);
     final dto = PoiResponseDto.fromJson(jsonDecode(response.body));
-    return dto.list.map((e) => Poi.fromDto(e)).toList();
+    return dto.list.map((e) => e.toPoi()).toList();
   }
 }
