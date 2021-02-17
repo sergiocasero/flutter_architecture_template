@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_architecture_template/view/viewmodel/RootViewModel.dart';
+import 'package:get/get.dart';
 import 'package:stacked/stacked.dart';
 
 abstract class RootWidget<T extends RootViewModel> extends StatelessWidget {
@@ -15,7 +16,7 @@ abstract class RootWidget<T extends RootViewModel> extends StatelessWidget {
         return widget(model);
       },
       viewModelBuilder: () => _model,
-      onModelReady: (model) => model.initialize(),
+      onModelReady: (model) => model.initialize(Get.arguments),
     );
   }
 
