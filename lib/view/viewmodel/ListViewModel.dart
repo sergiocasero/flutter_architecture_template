@@ -14,7 +14,7 @@ class ListViewModel extends RootViewModel {
   ListViewModel(this._repository, this._navigator);
 
   @override
-  initialize() {
+  initialize(dynamic arguments) {
     // Do nothing in that case
   }
 

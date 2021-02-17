@@ -5,7 +5,7 @@ abstract class RootViewModel extends BaseViewModel {
 
   bool get loading => _loading;
 
-  initialize();
+  initialize(dynamic arguments);
 
   void showProgress() {
     _loading = true;

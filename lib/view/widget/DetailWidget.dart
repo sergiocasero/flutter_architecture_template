@@ -11,7 +11,6 @@ class DetailWidget extends RootWidget<DetailViewModel> {
 
   @override
   Widget widget(DetailViewModel model) {
-    model.onDetailIdFound(Get.arguments);
     return Scaffold(
       body: Center(child: Text(model.poiTitle)),
     );

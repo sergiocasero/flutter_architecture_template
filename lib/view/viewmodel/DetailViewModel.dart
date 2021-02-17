@@ -20,13 +20,11 @@ class DetailViewModel extends RootViewModel {
   DetailViewModel(this._repository);
 
   @override
-  initialize() {
-    // Nothing to do here
-  }
-
-  void onDetailIdFound(String id) {
-    _id = id;
-    _getPoiDetail(id);
+  initialize(dynamic arguments) {
+    if(arguments != null && arguments is String){
+      _id = arguments;
+      _getPoiDetail(_id);
+    }
   }
 
   void _getPoiDetail(String id) async {
